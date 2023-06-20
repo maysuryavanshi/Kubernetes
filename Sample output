@@ -1,0 +1,40 @@
+# Output of the terrafrom apply command:
+
+terrafrom apply:
+
+Apply complete! Resources: 26 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+private_ip_of_demo_server = "10.10.3.86"
+public_ip_of_demo_server = "13.126.103.28"
+-----------------------------------------------------------------
+# Run the below command on demo_server to connect the nodes:
+
+first check kubectl pakage is available or not on demo_server if not available then run the below commands:
+
+curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.23.17/2023-05-11/bin/linux/amd64/kubectl
+
+chmod +x kubectl
+
+mv kubectl /usr/local/bin
+
+aws configure
+
+put the access and secret keys and region.
+
+aws eks update-kubeconfig --region ap-south-1 --name ed-eks-01
+
+kubectl get all
+
+kubectl get nodes
+
+output:
+[root@ip-10-10-3-86 ~]# kubectl get all
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   172.20.0.1   <none>        443/TCP   38m
+[root@ip-10-10-3-86 ~]# kubectl get nodes
+NAME                                        STATUS   ROLES    AGE   VERSION
+ip-10-10-2-39.ap-south-1.compute.internal   Ready    <none>   35m   v1.27.1-eks-2f008fe
+ip-10-10-3-93.ap-south-1.compute.internal   Ready    <none>   35m   v1.27.1-eks-2f008fe
+[root@ip-10-10-3-86 ~]# 
